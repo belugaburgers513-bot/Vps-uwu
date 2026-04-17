@@ -1,0 +1,35 @@
+app = "myvps-little-sea-1693"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  TERM = "xterm-256color"
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '16gb'
+  cpus = 8
+  memory_mb = 16384
+
+# SSH access on port 22
+[[services]]
+  internal_port = 2222
+  protocol = "tcp"
+  auto_stop_machines = false
+  auto_start_machines = true
+
+  [[services.ports]]
+    port = 22
+
+# Minecraft port
+[[services]]
+  internal_port = 25565
+  protocol = "tcp"
+  auto_stop_machines = false
+  auto_start_machines = true
+
+  [[services.ports]]
+    port = 25565
+
+
